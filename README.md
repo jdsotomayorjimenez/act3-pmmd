@@ -15,6 +15,7 @@ El WordCount original separa el texto únicamente por espacios, por lo que varia
 │   ├── WC_Mapper.java                         # Divide cada línea en palabras y las normaliza (aquí está el cambio)
 │   ├── WC_Reducer.java                        # Suma las ocurrencias de cada palabra (también se usa como combiner)
 │   └── WC_Runner.java                         # Configura y lanza el job
+├── entrada/input.txt                          # Archivo de entrada que se sube a HDFS
 ├── capturas/                                  # Evidencia de HDFS y de la ejecución del job
 └── resultado/part-00000                       # Archivo resultante del conteo
 ```
@@ -62,7 +63,7 @@ mvn clean package
 
 # 2. Subir el archivo de entrada a HDFS
 hdfs dfs -mkdir -p /entrada
-hdfs dfs -put input.txt /entrada/
+hdfs dfs -put entrada/input.txt /entrada/
 
 # 3. Ejecutar el job (el directorio de salida no debe existir)
 hadoop jar target/WC_Count-1.0-SNAPSHOT.jar org.jdsotomayor.WC_Runner /entrada/input.txt /salida3
