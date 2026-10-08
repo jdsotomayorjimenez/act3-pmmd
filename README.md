@@ -1,4 +1,4 @@
-# Actividad 2: WordCount con Hadoop MapReduce
+# Actividad 3: WordCount con Hadoop MapReduce
 
 Programa de conteo de palabras (*WordCount*) sobre Hadoop MapReduce, modificado para que el conteo **no distinga entre mayúsculas y minúsculas** y **ignore los caracteres especiales**.
 
