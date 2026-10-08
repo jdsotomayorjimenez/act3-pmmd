@@ -1,6 +1,7 @@
 package org.jdsotomayor;
 
 import java.io.IOException;
+import java.util.Locale;
 import java.util.StringTokenizer;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
@@ -19,7 +20,11 @@ public class WC_Mapper extends MapReduceBase implements Mapper<LongWritable, Tex
         String line = value.toString();
         StringTokenizer tokenizer = new StringTokenizer(line);
         while(tokenizer.hasMoreTokens()){
-            word.set(tokenizer.nextToken());
+            String clean = tokenizer.nextToken().toLowerCase(Locale.ROOT).replaceAll("[^\\p{L}\\p{N}]", "");
+            if (clean.isEmpty()) {
+                continue;
+            }
+            word.set(clean);
             output.collect(word, one);
         }
     }
