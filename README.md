@@ -80,48 +80,48 @@ Pestaña *Overview* del NameNode (`localhost:9000`) activo, versión Hadoop 3.5.
 
 ![Estado del NameNode](capturas/1.png)
 
-### 2. Directorio `/entrada` en HDFS
+### 2. DataNodes activos
+Pestaña *Datanodes*: un DataNode en servicio (`localhost:9866`), con 16 bloques, versión 3.5.0 y capacidad de 472.84 GB.
+
+![DataNodes activos](capturas/2.png)
+
+### 3. Directorio `/entrada` en HDFS
 Contiene el archivo `input.txt` (2.86 KB), con replicación 1 y tamaño de bloque de 128 MB.
 
-![Directorio /entrada](capturas/2.png)
+![Directorio /entrada](capturas/3.png)
 
-### 3. Detalle del archivo de entrada `input.txt`
+### 4. Detalle del archivo de entrada `input.txt`
 Información del bloque (2927 bytes, disponible en `localhost`) y el contenido original del texto.
 
-![Detalle de input.txt](capturas/3.png)
+![Detalle de input.txt](capturas/4.png)
 
-### 4. Directorio de salida `/salida3`
+### 5. Directorio de salida `/salida3`
 Se observan `_SUCCESS` (el job terminó correctamente) y `part-00000` (el resultado, de 2.07 KB).
 
-![Directorio /salida3](capturas/4.png)
+![Directorio /salida3](capturas/5.png)
 
-### 5. Detalle del archivo resultante `part-00000`
+### 6. Detalle del archivo resultante `part-00000`
 Información del bloque (2121 bytes) y el inicio del contenido, con las palabras ya en minúsculas y sin signos de puntuación.
 
-![Detalle de part-00000](capturas/5.png)
+![Detalle de part-00000](capturas/6.png)
 
-### 6. Ejecución del job
+### 7. Ejecución del job
 Comando `hadoop jar` y avance del job hasta `map 100% reduce 100%` y `completed successfully`.
 
-![Ejecución del job: inicio](capturas/6.png)
+![Ejecución del job: inicio](capturas/7.png)
 
 Contadores del job. `Map output records=423` corresponde a las palabras del texto y `Reduce output records=193` a las palabras distintas del resultado.
 
-![Ejecución del job: contadores](capturas/6.1.png)
+![Ejecución del job: contadores](capturas/7.1.png)
 
 Final de la ejecución, sin errores de *shuffle*.
 
-![Ejecución del job: final](capturas/6.2.png)
+![Ejecución del job: final](capturas/7.2.png)
 
-### 7. Contenido del resultado
+### 8. Contenido del resultado
 Salida de `hdfs dfs -cat /salida3/part-00000`.
 
-![Resultado del conteo](capturas/7.png)
-
-### 8. DataNodes activos
-Pestaña *Datanodes*: un DataNode en servicio (`localhost:9866`), con 16 bloques, versión 3.5.0 y capacidad de 472.84 GB.
-
-![DataNodes activos](capturas/8.png)
+![Resultado del conteo](capturas/8.png)
 
 ## Resultado
 
